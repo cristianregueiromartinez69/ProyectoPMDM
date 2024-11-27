@@ -22,16 +22,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.334" />
 
-    <Button
-        android:id="@+id/bluetookButtonId"
-        android:layout_width="138dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="364dp"
-        android:layout_marginEnd="161dp"
-        android:text="Connect"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
