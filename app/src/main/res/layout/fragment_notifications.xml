@@ -17,6 +17,57 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.199" />
+
+    <ImageButton
+        android:id="@+id/twitterID"
+        android:layout_width="133dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="280dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/bot_n_para_twitter"
+        android:src="@drawable/twitter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_notifications"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/instagramID"
+        android:layout_width="157dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="23dp"
+        android:src="@drawable/instagram"
+        app:layout_constraintBottom_toTopOf="@+id/tiktokID"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/twitterID"
+        app:layout_constraintTop_toBottomOf="@+id/text_notifications"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/tiktokID"
+        android:layout_width="144dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="134dp"
+        android:layout_marginBottom="80dp"
+        android:src="@drawable/tiktok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/twitterID" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

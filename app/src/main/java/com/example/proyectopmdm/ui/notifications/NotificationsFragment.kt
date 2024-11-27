@@ -1,5 +1,7 @@
 package com.example.proyectopmdm.ui.notifications
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +15,6 @@ class NotificationsFragment : Fragment() {
 
     private var _binding: FragmentNotificationsBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -32,7 +32,18 @@ class NotificationsFragment : Fragment() {
         notificationsViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+        binding.twitterID.setOnClickListener{
+            openSocialMedia("https://x.com/SanMarinoTeam?t=RAmgRuOegjUNB1kX9tUVNw&s=09")
+        }
+
+
         return root
+    }
+
+    private fun openSocialMedia(url: String) {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
     }
 
     override fun onDestroyView() {
