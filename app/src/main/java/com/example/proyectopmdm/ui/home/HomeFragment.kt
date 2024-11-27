@@ -12,10 +12,10 @@ import com.example.proyectopmdm.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+
+    private val REQUEST_ENABLE_BT = 1
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,6 +32,9 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
+
+
+
         return root
     }
 
