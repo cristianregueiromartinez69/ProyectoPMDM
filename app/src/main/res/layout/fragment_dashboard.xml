@@ -13,10 +13,10 @@
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_dashboard"
-        app:layout_constraintVertical_bias="0.157" />
+        app:layout_constraintVertical_bias="0.049" />
 
     <TextView
         android:id="@+id/text_dashboard"
@@ -29,24 +29,26 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintVertical_bias="0.057" />
 
     <TextView
         android:id="@+id/textoIrYoutube"
         android:layout_width="277dp"
         android:layout_height="29dp"
         android:layout_marginStart="166dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="57dp"
         android:layout_marginEnd="187dp"
         android:layout_marginBottom="127dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/videoView" />
+        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        app:layout_constraintVertical_bias="0.662" />
 
     <Button
         android:id="@+id/buttonyoutube"
@@ -59,10 +61,56 @@
         android:text="enter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textoIrYoutube"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.233" />
+
+    <Button
+        android:id="@+id/atrasID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="294dp"
+        android:layout_marginBottom="5dp"
+        android:text="atrás"
+        app:layout_constraintBottom_toTopOf="@+id/textoIrYoutube"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        app:layout_constraintVertical_bias="0.448" />
+
+    <Button
+        android:id="@+id/pausaID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="171dp"
+        android:layout_marginBottom="32dp"
+        android:text="pause"
+        app:layout_constraintBottom_toTopOf="@+id/textoIrYoutube"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/atrasID"
+        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/adelanteID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="33dp"
+        android:text="adelante"
+        app:layout_constraintBottom_toTopOf="@+id/textoIrYoutube"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pausaID"
+        app:layout_constraintTop_toBottomOf="@+id/videoView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
