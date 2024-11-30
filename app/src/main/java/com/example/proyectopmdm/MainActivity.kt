@@ -35,4 +35,3 @@ class MainActivity : AppCompatActivity() {
 
 
 }
-//TODO: hacer conexion bluetooth

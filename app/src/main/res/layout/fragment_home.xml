@@ -24,19 +24,17 @@
         app:layout_constraintVertical_bias="0.66" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="115dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="41dp"
-        android:src="@drawable/monoboxeo"
+        android:id="@+id/imageView2"
+        android:layout_width="291dp"
+        android:layout_height="246dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="160dp"
+        android:src="@drawable/audiovideologo"
         app:layout_constraintBottom_toTopOf="@+id/text_home"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
