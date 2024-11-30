@@ -14,4 +14,5 @@ class DashboardViewModel : ViewModel() {
     private val _textClick = MutableLiveData<String>().apply {
         value = "TUTORIAL SUBIR VÍDEO ANDROID STUDIO"
     }
+    val textYoutube : LiveData<String> = _textClick
 }

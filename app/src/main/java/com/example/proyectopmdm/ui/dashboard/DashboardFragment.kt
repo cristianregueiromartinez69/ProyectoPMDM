@@ -33,6 +33,7 @@ class DashboardFragment : Fragment() {
             textView.text = it
         }
 
+
         // Configurar el VideoView
         val videoView = binding.videoView
 
@@ -47,6 +48,13 @@ class DashboardFragment : Fragment() {
 
         // Iniciar la reproducción automáticamente
         videoView.start()
+
+        val textViewYoutube: TextView = binding.textoIrYoutube
+        dashboardViewModel.textYoutube.observe(viewLifecycleOwner) {
+            textViewYoutube.text = it
+        }
+
+
         return root
     }
 
