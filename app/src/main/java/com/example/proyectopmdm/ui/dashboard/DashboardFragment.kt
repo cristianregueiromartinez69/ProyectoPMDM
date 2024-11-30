@@ -37,7 +37,7 @@ class DashboardFragment : Fragment() {
         val videoView = binding.videoView
 
         // Establecer la URI del video
-        val videoUri = "android.resource://${requireContext().packageName}/raw/boxeomonos" // Cambia 'sample_video' por el nombre de tu archivo
+        val videoUri = "android.resource://${requireContext().packageName}/raw/doctops"
         videoView.setVideoPath(videoUri)
 
         // Controladores para pausar y reproducir
