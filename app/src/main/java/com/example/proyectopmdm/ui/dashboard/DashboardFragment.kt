@@ -39,6 +39,8 @@ class DashboardFragment : Fragment() {
         // Configurar el VideoView
         val videoView = binding.videoView
 
+        val pauseButton = binding.pausaID
+
         // Establecer la URI del video
         val videoUri = "android.resource://${requireContext().packageName}/raw/doctops"
         videoView.setVideoPath(videoUri)
@@ -50,6 +52,40 @@ class DashboardFragment : Fragment() {
 
         // Iniciar la reproducción automáticamente
         videoView.start()
+
+        binding.pausaID.setOnClickListener{
+            if (videoView.isPlaying) {
+                videoView.pause()
+                pauseButton.text = "play"
+            } else {
+                videoView.start()
+                pauseButton.text = "stop"
+            }
+        }
+
+        binding.atrasID.setOnClickListener{
+            val currentPosition = videoView.currentPosition
+            val newPosition = currentPosition - 10000
+            if(newPosition >= 0){
+                videoView.seekTo(newPosition)
+            }
+            else{
+                videoView.seekTo(0)
+            }
+        }
+
+        binding.adelanteID.setOnClickListener {
+            val currentPosition = videoView.currentPosition
+            val duration = videoView.duration
+            val newPosition = currentPosition + 10000
+
+            if(newPosition <= duration){
+                videoView.seekTo(newPosition)
+            }
+            else{
+                videoView.seekTo(duration)
+            }
+        }
 
         val textViewYoutube: TextView = binding.textoIrYoutube
         dashboardViewModel.textYoutube.observe(viewLifecycleOwner) {

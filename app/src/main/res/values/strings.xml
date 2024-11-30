@@ -9,4 +9,7 @@
     <string name="atr_s">atrás</string>
     <string name="textview">TextView</string>
     <string name="enter">enter</string>
+    <string name="stop">stop</string>
+    <string name="rewind">rewind</string>
+    <string name="advance">advance</string>
 </resources>
