@@ -53,6 +53,41 @@ class AudiosFragment : Fragment(){
             openYoutubeAudios("https://youtu.be/VWSqi7qguw4?si=rpbAj2U55tTbKUTU")
         }
 
+        binding.pauseAudiosId.setOnClickListener {
+            if(mediaPlayer?.isPlaying == true){
+                mediaPlayer?.pause()
+                binding.pauseAudiosId.text = "play"
+            }
+            else{
+                mediaPlayer?.start()
+                binding.pauseAudiosId.text = "stop"
+            }
+        }
+
+        binding.atrasAudiosId.setOnClickListener {
+            mediaPlayer?.let {
+                val newPosition = it.currentPosition - 10000
+                if(newPosition >= 0){
+                    it.seekTo(newPosition)
+                }
+                else{
+                    it.seekTo(0)
+                }
+            }
+        }
+
+        binding.advanceAudiosId.setOnClickListener {
+            mediaPlayer?.let {
+                val newPosition = it.currentPosition + 10000
+                if(newPosition <= it.duration){
+                    it.seekTo(newPosition)
+                }
+                else{
+                    it.seekTo(it.duration)
+                }
+            }
+        }
+
 
 
 

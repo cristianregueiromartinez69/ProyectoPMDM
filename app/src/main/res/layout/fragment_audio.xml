@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="68dp"
-        android:text="pause"
+        android:text="stop"
         app:layout_constraintBottom_toTopOf="@+id/textViewAudio"
         app:layout_constraintStart_toEndOf="@+id/atras_audios_id" />
 
