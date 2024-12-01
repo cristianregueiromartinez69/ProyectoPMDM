@@ -18,6 +18,12 @@
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
+        android:id="@+id/navigation_audios"
+        android:name="com.example.proyectopmdm.ui.audios.AudiosFragment"
+        android:label="Audios"
+        tools:layout="@layout/fragment_audio" />
+
+    <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.proyectopmdm.ui.notifications.NotificationsFragment"
         android:label="Redes Sociales"
