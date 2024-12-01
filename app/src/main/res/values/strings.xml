@@ -12,4 +12,6 @@
     <string name="stop">stop</string>
     <string name="rewind">rewind</string>
     <string name="advance">advance</string>
+    <string name="video">Video</string>
+    <string name="redes">Redes</string>
 </resources>
