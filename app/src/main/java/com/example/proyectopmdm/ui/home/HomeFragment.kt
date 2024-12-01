@@ -14,7 +14,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val REQUEST_ENABLE_BT = 1
 
 
     override fun onCreateView(
