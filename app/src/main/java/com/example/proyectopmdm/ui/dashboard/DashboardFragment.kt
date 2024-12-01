@@ -15,8 +15,7 @@ class DashboardFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -36,21 +35,17 @@ class DashboardFragment : Fragment() {
         }
 
 
-        // Configurar el VideoView
         val videoView = binding.videoView
 
         val pauseButton = binding.pausaID
 
-        // Establecer la URI del video
         val videoUri = "android.resource://${requireContext().packageName}/raw/doctops"
         videoView.setVideoPath(videoUri)
 
-        // Controladores para pausar y reproducir
         videoView.setOnPreparedListener { mediaPlayer ->
             mediaPlayer.isLooping = true // Si quieres que el video se repita
         }
 
-        // Iniciar la reproducción automáticamente
         videoView.start()
 
         binding.pausaID.setOnClickListener{

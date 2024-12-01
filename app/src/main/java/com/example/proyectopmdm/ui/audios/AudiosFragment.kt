@@ -18,8 +18,7 @@ class AudiosFragment : Fragment(){
 
     private var _binding: FragmentAudioBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+
     private val binding get() = _binding!!
 
     private var mediaPlayer: MediaPlayer? = null
