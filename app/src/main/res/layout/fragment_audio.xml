@@ -59,5 +59,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/atras_audios_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginBottom="68dp"
+        android:text="rewind"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAudio"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/pause_audios_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="68dp"
+        android:text="pause"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAudio"
+        app:layout_constraintStart_toEndOf="@+id/atras_audios_id" />
+
+    <Button
+        android:id="@+id/advance_audios_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="68dp"
+        android:text="advance"
+        app:layout_constraintBottom_toTopOf="@+id/textViewAudio"
+        app:layout_constraintStart_toEndOf="@+id/pause_audios_id" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
