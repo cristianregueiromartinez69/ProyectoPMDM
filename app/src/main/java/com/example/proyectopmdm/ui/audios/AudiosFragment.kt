@@ -1,5 +1,6 @@
 package com.example.proyectopmdm.ui.audios
 
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.example.proyectopmdm.R
 import com.example.proyectopmdm.databinding.FragmentAudioBinding
 import com.example.proyectopmdm.databinding.FragmentDashboardBinding
 import com.example.proyectopmdm.ui.dashboard.DashboardViewModel
@@ -18,6 +20,8 @@ class AudiosFragment : Fragment(){
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +39,11 @@ class AudiosFragment : Fragment(){
             textView.text = it
         }
 
+        mediaPlayer = MediaPlayer.create(requireContext(), R.raw.song)
+
+        mediaPlayer?.start()
+
+
 
 
         return root
@@ -43,5 +52,7 @@ class AudiosFragment : Fragment(){
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 }
