@@ -10,8 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.proyectopmdm.R
 import com.example.proyectopmdm.databinding.FragmentAudioBinding
-import com.example.proyectopmdm.databinding.FragmentDashboardBinding
-import com.example.proyectopmdm.ui.dashboard.DashboardViewModel
+
 
 class AudiosFragment : Fragment(){
 
@@ -42,6 +41,11 @@ class AudiosFragment : Fragment(){
         mediaPlayer = MediaPlayer.create(requireContext(), R.raw.song)
 
         mediaPlayer?.start()
+
+        val textViewYoutube: TextView = binding.textViewAudio
+        audiosViewModel.textYoutubeAudio.observe(viewLifecycleOwner) {
+            textViewYoutube.text = it
+        }
 
 
 

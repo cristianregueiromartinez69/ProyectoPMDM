@@ -14,5 +14,5 @@ class AudiosViewModel : ViewModel(){
     private val _textClick = MutableLiveData<String>().apply {
         value = "TUTORIAL SUBIR AUDIO ANDROID STUDIO"
     }
-    val textYoutube : LiveData<String> = _textClick
+    val textYoutubeAudio : LiveData<String> = _textClick
 }
