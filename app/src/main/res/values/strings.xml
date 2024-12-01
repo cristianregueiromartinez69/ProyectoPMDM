@@ -14,4 +14,5 @@
     <string name="advance">advance</string>
     <string name="video">Video</string>
     <string name="redes">Redes</string>
+    <string name="audio">Audio</string>
 </resources>

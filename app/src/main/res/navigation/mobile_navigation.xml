@@ -22,4 +22,8 @@
         android:name="com.example.proyectopmdm.ui.notifications.NotificationsFragment"
         android:label="Redes Sociales"
         tools:layout="@layout/fragment_notifications" />
+
+
+
+
 </navigation>
