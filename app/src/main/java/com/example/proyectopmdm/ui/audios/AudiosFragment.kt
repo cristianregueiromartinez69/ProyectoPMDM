@@ -1,6 +1,8 @@
 package com.example.proyectopmdm.ui.audios
 
+import android.content.Intent
 import android.media.MediaPlayer
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -47,6 +49,10 @@ class AudiosFragment : Fragment(){
             textViewYoutube.text = it
         }
 
+        binding.enteraudioid.setOnClickListener {
+            openYoutubeAudios("https://youtu.be/VWSqi7qguw4?si=rpbAj2U55tTbKUTU")
+        }
+
 
 
 
@@ -56,6 +62,13 @@ class AudiosFragment : Fragment(){
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
+    private fun openYoutubeAudios(url:String){
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(intent)
         mediaPlayer?.release()
         mediaPlayer = null
     }
