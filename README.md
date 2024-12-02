@@ -1,9 +1,9 @@
-# PROYECTO BLUETOOTH
+# PROYECTO Video-Audio PMDM
 
 **Índice**
 - Plantilla escogida y sus características
-- Como funciona la conexión bluetooth
-- Transferencia de archivos mediante bluetooth
+- Como se pone un video en android Studio
+- Como se pone un audio en Android Studio
 
 # 1. Plantilla escogida y sus características :smile:
 
@@ -216,3 +216,83 @@ El HomeFragment es responsable de mostrar una vista con un TextView, cuyo conten
 El HomeViewModel gestiona los datos que el Fragment necesita (en este caso, el texto), y garantiza que esos datos sobrevivan a los cambios de configuración.
 Gracias a LiveData, cualquier cambio en el ViewModel se refleja automáticamente en el fragmento.
 ```
+
+# 2. Como se pone un video en android Studio :smile:
+Lo primero sería ir a algún fragmento de los que tenemos en el proyecto, o crear nosotros un fragmento de nuevo. Despúes tenemos que codificar lo siguiente:
+```bash
+ #Configurar el VideoView
+        val videoView = binding.videoView
+
+        val pauseButton = binding.pausaID
+
+        #Establecer la URI del video
+        val videoUri = "android.resource://${requireContext().packageName}/raw/doctops"
+        videoView.setVideoPath(videoUri)
+```
+
+**Como funciona este codigo** :confused:
+
+1. La clave de este código está en el objeto binding que lo usamos de enlace entre las plantillas xml.
+2. Se crea una variable que será el video igual el id que le hemos dado al videoview en la plantilla xml
+3. Hacemos lo mismo con los botones, aunque eso lo vemos luego
+4. establecemos la variable de la url del video
+5. la url debe de estar en un paquete llamado raw y dentro los videos o audios que queramos
+6. llamamos al metodo del videoview para meter el path del video
+
+### 2.1 Meter botones para hacer que el vídeo vaya adelante o atrás :smile:
+```bash
+   #Controladores para pausar y reproducir
+        videoView.setOnPreparedListener { mediaPlayer ->
+            mediaPlayer.isLooping = true // Si quieres que el video se repita
+        }
+
+        #Iniciar la reproducción automáticamente
+        videoView.start()
+
+        #pausar el video y reproducirlo
+        binding.pausaID.setOnClickListener{
+            if (videoView.isPlaying) {
+                videoView.pause()
+                pauseButton.text = "play"
+            } else {
+                videoView.start()
+                pauseButton.text = "stop"
+            }
+        }
+
+        #darle para atras al video 10 segundos
+        binding.atrasID.setOnClickListener{
+            val currentPosition = videoView.currentPosition
+            val newPosition = currentPosition - 10000
+            if(newPosition >= 0){
+                videoView.seekTo(newPosition)
+            }
+            else{
+                videoView.seekTo(0)
+            }
+        }
+
+        #darle para adelante al video 10 segundos 
+        binding.adelanteID.setOnClickListener {
+            val currentPosition = videoView.currentPosition
+            val duration = videoView.duration
+            val newPosition = currentPosition + 10000
+
+            if(newPosition <= duration){
+                videoView.seekTo(newPosition)
+            }
+            else{
+                videoView.seekTo(duration)
+            }
+        }
+```
+
+Así quedaría el fragmento:
+![fotovideo](https://github.com/user-attachments/assets/86220f15-ae40-4b4d-a7e6-4dd30bd726a8)
+
+
+
+
+
+
+
