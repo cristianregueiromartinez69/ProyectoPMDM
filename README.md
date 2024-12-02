@@ -290,8 +290,77 @@ Lo primero sería ir a algún fragmento de los que tenemos en el proyecto, o cre
 Así quedaría el fragmento:
 ![fotovideo](https://github.com/user-attachments/assets/86220f15-ae40-4b4d-a7e6-4dd30bd726a8)
 
+# 3. Como se pone un audio en Android Studio :smile:
+Lo primero sería ir a algún fragmento de los que tenemos en el proyecto, o crear nosotros un fragmento de nuevo. Despúes tenemos que codificar lo siguiente:
+
+```bash
+    private var mediaPlayer: MediaPlayer? = null
+    mediaPlayer = MediaPlayer.create(requireContext(), R.raw.song)
+    mediaPlayer?.start()
+```
+
+Con el código anterior, creamos un objeto MediaPlayer, el cual puede ser null, llamamos a un metodo que crea el audio y pilla la fuente del audio en la carpeta raw e iniciamos el audio con start()
+
+**Como establecer botones audio** 🤔
+```bash
+ #Configuración del botón de pausa/reproducción
+        binding.pauseAudiosId.setOnClickListener {
+            if(mediaPlayer?.isPlaying == true){
+                mediaPlayer?.pause()
+                binding.pauseAudiosId.text = "play"
+            }
+            else{
+                mediaPlayer?.start()
+                binding.pauseAudiosId.text = "stop"
+            }
+        }
+
+        #Configuración del botón para retroceder en el audio
+        binding.atrasAudiosId.setOnClickListener {
+            mediaPlayer?.let {
+                val newPosition = it.currentPosition - 10000
+                if(newPosition >= 0){
+                    it.seekTo(newPosition)
+                }
+                else{
+                    it.seekTo(0)
+                }
+            }
+        }
+
+        #Configuración del botón para avanzar en el audio
+        binding.advanceAudiosId.setOnClickListener {
+            mediaPlayer?.let {
+                val newPosition = it.currentPosition + 10000
+                if(newPosition <= it.duration){
+                    it.seekTo(newPosition)
+                }
+                else{
+                    it.seekTo(it.duration)
+                }
+            }
+        }
 
 
+```
+
+Así queda el fragmento:
+![fotoaudio](https://github.com/user-attachments/assets/e4d1589d-90b0-44e3-a68c-25c510f84b34)
+
+
+## IMPORTANTE :scream:
+Tanto en el fragmento de audio, debemos hacer esto:
+
+```bash
+#fragmento de audio
+override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+```
+Esto lo hacemos para que al ir a otro fragmento, no se esté reproduciendo el audio todo el tiempo, si no que termine su ejecución y liberamos los recursos
 
 
 
