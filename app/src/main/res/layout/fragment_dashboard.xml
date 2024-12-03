@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="377dp"
+        android:layout_height="346dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_dashboard"
+        app:layout_constraintVertical_bias="0.049" />
+
     <TextView
         android:id="@+id/text_dashboard"
         android:layout_width="match_parent"
@@ -17,21 +29,92 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.334" />
+        app:layout_constraintVertical_bias="0.057" />
+
+    <TextView
+        android:id="@+id/textoIrYoutube"
+        android:layout_width="277dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="166dp"
+        android:layout_marginTop="57dp"
+        android:layout_marginEnd="187dp"
+        android:layout_marginBottom="127dp"
+        android:text="@string/textview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        app:layout_constraintVertical_bias="0.662" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="138dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="364dp"
-        android:layout_marginEnd="161dp"
-        android:text="Connect"
+        android:id="@+id/buttonyoutube"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="35dp"
+        android:text="@string/enter"
+        android:background="@color/green"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textoIrYoutube"
+        app:layout_constraintVertical_bias="0.233" />
+
+    <Button
+        android:id="@+id/atrasID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="250dp"
+        android:layout_marginBottom="5dp"
+        android:background="#620000"
+        android:text="@string/rewind"
+        app:layout_constraintBottom_toTopOf="@+id/textoIrYoutube"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        app:layout_constraintVertical_bias="0.437" />
+
+    <Button
+        android:id="@+id/pausaID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="171dp"
+        android:layout_marginBottom="38dp"
+        android:text="@string/stop"
+        android:background="@color/cyan"
+        app:layout_constraintBottom_toTopOf="@+id/textoIrYoutube"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/atrasID"
+        app:layout_constraintTop_toBottomOf="@+id/videoView"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/adelanteID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="35dp"
+        android:text="@string/advance"
+        android:background="@color/pink"
+        app:layout_constraintBottom_toTopOf="@+id/textoIrYoutube"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pausaID"
+        app:layout_constraintTop_toBottomOf="@+id/videoView" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
