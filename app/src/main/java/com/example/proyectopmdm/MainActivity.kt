@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+
 }
 
 
+//TODO: mirar todo relacionado con streaming
