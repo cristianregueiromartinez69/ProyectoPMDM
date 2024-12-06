@@ -17,7 +17,7 @@ class DashboardViewModel : ViewModel() {
      * Inicializado con el valor "Video de terror".
      */
     private val _text = MutableLiveData<String>().apply {
-        value = "Video de terror"
+        value = "dependencias de terceros de youtube"
     }
 
     /**
@@ -32,7 +32,7 @@ class DashboardViewModel : ViewModel() {
      * Inicializado con el valor "TUTORIAL SUBIR VÍDEO ANDROID STUDIO".
      */
     private val _textClick = MutableLiveData<String>().apply {
-        value = "TUTORIAL SUBIR VÍDEO ANDROID STUDIO"
+        value = "dependencias de exoPlayer"
     }
 
     /**
