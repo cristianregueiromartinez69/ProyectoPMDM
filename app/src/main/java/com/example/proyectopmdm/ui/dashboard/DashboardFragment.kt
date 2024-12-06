@@ -1,6 +1,5 @@
 package com.example.proyectopmdm.ui.dashboard
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.proyectopmdm.databinding.FragmentDashboardBinding
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.trackselection.DefaultTrackSelector
 import com.google.android.exoplayer2.ui.PlayerView
 
 class DashboardFragment : Fragment() {
@@ -19,6 +19,7 @@ class DashboardFragment : Fragment() {
     private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
     private var player: ExoPlayer? = null
+    private var trackSelector: DefaultTrackSelector? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,13 +41,18 @@ class DashboardFragment : Fragment() {
 
 
 
-
-
         return root
     }
 
     private fun initializePlayer() {
-        player = ExoPlayer.Builder(requireContext()).build()
+        trackSelector = DefaultTrackSelector(requireContext()).apply {
+            setParameters(buildUponParameters().setMaxVideoSizeSd())
+        }
+
+        player = ExoPlayer.Builder(requireContext())
+            .setTrackSelector(trackSelector!!)
+            .build()
+
         val playerView: PlayerView = binding.playerView
         playerView.player = player
 
@@ -55,7 +61,17 @@ class DashboardFragment : Fragment() {
         player?.setMediaItem(mediaItem)
         player?.playWhenReady = true
         player?.prepare()
+
+        // Listener para cambiar la velocidad de reproducción
+        playerView.setControllerVisibilityListener { visibility ->
+            if (visibility == View.VISIBLE) {
+                // Aquí puedes configurar un menú o dialogo para cambiar la velocidad
+                // Ejemplo de cambio de velocidad
+                player?.setPlaybackParameters(player!!.playbackParameters.withSpeed(1.5f))
+            }
+        }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
