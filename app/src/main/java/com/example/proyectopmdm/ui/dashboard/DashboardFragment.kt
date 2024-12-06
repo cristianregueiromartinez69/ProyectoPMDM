@@ -100,15 +100,7 @@ class DashboardFragment : Fragment() {
             }
         }
 
-        // Configura el texto y botón de acceso a YouTube desde el ViewModel
-        val textViewYoutube: TextView = binding.textoIrYoutube
-        dashboardViewModel.textYoutube.observe(viewLifecycleOwner) {
-            textViewYoutube.text = it
-        }
 
-        binding.buttonyoutube.setOnClickListener{
-            openYoutube("https://youtu.be/ChYCCtlqfIc?si=Ka1WTJI86_nQhpYV")
-        }
 
 
 
@@ -124,14 +116,6 @@ class DashboardFragment : Fragment() {
         _binding = null
     }
 
-    /**
-     * Abre un enlace de YouTube en un navegador o aplicación instalada.
-     *
-     * @param url Dirección URL del video de YouTube.
-     */
-    private fun openYoutube(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
-    }
+
 
 }

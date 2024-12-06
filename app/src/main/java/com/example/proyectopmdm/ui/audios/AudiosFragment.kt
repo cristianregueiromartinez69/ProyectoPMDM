@@ -64,15 +64,7 @@ class AudiosFragment : Fragment(){
 
         mediaPlayer?.start()
 
-        // Configuración del texto y escucha de clics para un enlace de YouTube
-        val textViewYoutube: TextView = binding.textViewAudio
-        audiosViewModel.textYoutubeAudio.observe(viewLifecycleOwner) {
-            textViewYoutube.text = it
-        }
 
-        binding.enteraudioid.setOnClickListener {
-            openYoutubeAudios("https://youtu.be/VWSqi7qguw4?si=rpbAj2U55tTbKUTU")
-        }
 
         // Configuración del botón de pausa/reproducción
         binding.pauseAudiosId.setOnClickListener {
@@ -129,15 +121,5 @@ class AudiosFragment : Fragment(){
         mediaPlayer = null
     }
 
-    /**
-     * Abre un enlace de YouTube en el navegador o en la aplicación de YouTube.
-     *
-     * @param url URL del video de YouTube.
-     */
-    private fun openYoutubeAudios(url:String){
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
-        mediaPlayer?.release()
-        mediaPlayer = null
-    }
+
 }
