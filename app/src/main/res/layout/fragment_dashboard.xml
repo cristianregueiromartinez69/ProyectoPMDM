@@ -6,17 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.dashboard.DashboardFragment">
 
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="377dp"
-        android:layout_height="346dp"
-        android:layout_marginTop="8dp"
+
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="360dp"
+        android:layout_height="313dp"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="134dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="209dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_dashboard"
-        app:layout_constraintVertical_bias="0.049" />
+        app:resize_mode="fit"
+        app:show_buffering="when_playing"
+        app:use_controller="true" />
 
     <TextView
         android:id="@+id/text_dashboard"
@@ -33,51 +39,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.057" />
-
-    <Button
-        android:id="@+id/atrasID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="290dp"
-        android:background="#620000"
-        android:text="@string/rewind"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/videoView" />
-
-    <Button
-        android:id="@+id/pausaID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="17dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="171dp"
-        android:background="@color/cyan"
-        android:text="@string/stop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/atrasID"
-        app:layout_constraintTop_toBottomOf="@+id/videoView" />
-
-    <Button
-        android:id="@+id/adelanteID"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="57dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="209dp"
-        android:background="@color/pink"
-        android:text="@string/advance"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.946"
-        app:layout_constraintStart_toEndOf="@+id/pausaID"
-        app:layout_constraintTop_toBottomOf="@+id/videoView"
-        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
