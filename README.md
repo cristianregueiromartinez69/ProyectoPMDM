@@ -18,7 +18,8 @@ Un menú inferior con pestañas para navegar entre secciones principales de la a
 ```
 
 ```bash
-#NavController
+    #
+    
 Gestiona la navegación entre fragmentos asociados a estas pestañas
 ```
 
