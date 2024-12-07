@@ -56,23 +56,10 @@ class NotificationsFragment : Fragment() {
             textView.text = it
         }
 
-        // Configura el comportamiento del botón de Twitter para abrir el enlace
-        binding.twitterID.setOnClickListener{
-            openSocialMedia("https://x.com/SanMarinoTeam?t=RAmgRuOegjUNB1kX9tUVNw&s=09")
-        }
+
 
 
         return root
-    }
-
-    /**
-     * Abre una red social a través de un Intent con el URL proporcionado.
-     *
-     * @param url La URL de la red social que se abrirá.
-     */
-    private fun openSocialMedia(url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(intent)
     }
 
     /**
