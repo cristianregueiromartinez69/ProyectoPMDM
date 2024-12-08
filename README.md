@@ -219,93 +219,73 @@ Gracias a LiveData, cualquier cambio en el ViewModel se refleja automáticamente
 ```
 
 # 2. Como se pone un video en android Studio :smile:
-Lo primero sería ir a algún fragmento de los que tenemos en el proyecto, o crear nosotros un fragmento de nuevo. Despúes tenemos que codificar lo siguiente:
+
+### Integración con YouTube 🤔
+
+1. **YouTubePlayerView:** Utilizamos `YouTubePlayerView` de la biblioteca `androidyoutubeplayer` para incrustar videos de YouTube sin problemas dentro del diseño de nuestra aplicación.
+2. **Gestión del Ciclo de Vida:** Al agregar `YouTubePlayerView` como un observador del ciclo de vida, nos aseguramos de que la reproducción de video se pause y se reanude automáticamente cuando cambie el estado del ciclo de vida de la aplicación.
+3. **Carga de Videos:** Aprovechamos la función `loadVideo` de `YouTubePlayer` para cargar y reproducir videos de YouTube utilizando sus ID de video únicos.
+
+### Reproducción de Video Local
+
+1. **Configuración de ExoPlayer:** Inicializamos una instancia de `ExoPlayer` utilizando `ExoPlayer.Builder` y la asociamos con un `PlayerView` en nuestro diseño.
+2. **Creación de MediaItem:** Creamos un `MediaItem` a partir de una URI de video local, especificando la ruta al archivo de video almacenado en los recursos de la aplicación.
+3. **Control de Reproducción:** Utilizamos las funciones `setMediaItem`, `prepare` y `playWhenReady` de `ExoPlayer` para controlar la reproducción de video, asegurando una experiencia de usuario fluida y atractiva.
+
+## Fragmentos de Código 😎
+
 ```bash
- #Configurar el VideoView
-        val videoView = binding.videoView
+#integracion youtube
+val youTubePlayerView: YouTubePlayerView = binding.playerView
+        lifecycle.addObserver(youTubePlayerView)
 
-        val pauseButton = binding.pausaID
-
-        #Establecer la URI del video
-        val videoUri = "android.resource://${requireContext().packageName}/raw/doctops"
-        videoView.setVideoPath(videoUri)
+        youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+            override fun onReady(youTubePlayer: YouTubePlayer) {
+                val videoId = "_ttcR7VDouE"
+                youTubePlayer.loadVideo(videoId, 0f)
+            }
+        })
 ```
 
-**Como funciona este codigo** :confused:
-
-1. La clave de este código está en el objeto binding que lo usamos de enlace entre las plantillas xml.
-2. Se crea una variable que será el video igual el id que le hemos dado al videoview en la plantilla xml
-3. Hacemos lo mismo con los botones, aunque eso lo vemos luego
-4. establecemos la variable de la url del video
-5. la url debe de estar en un paquete llamado raw y dentro los videos o audios que queramos
-6. llamamos al metodo del videoview para meter el path del video
-
-### 2.1 Meter botones para hacer que el vídeo vaya adelante o atrás :smile:
 ```bash
-   #Controladores para pausar y reproducir
-        videoView.setOnPreparedListener { mediaPlayer ->
-            mediaPlayer.isLooping = true // Si quieres que el video se repita
-        }
+#integracion con exoplayer
+private var player: ExoPlayer? = null
+private fun initializePlayer(){
+        player = ExoPlayer.Builder(requireContext()).build()
+        val playerView : PlayerView = binding.playerViewExoPlayer2
+        playerView.player = player
 
-        #Iniciar la reproducción automáticamente
-        videoView.start()
-
-        #pausar el video y reproducirlo
-        binding.pausaID.setOnClickListener{
-            if (videoView.isPlaying) {
-                videoView.pause()
-                pauseButton.text = "play"
-            } else {
-                videoView.start()
-                pauseButton.text = "stop"
-            }
-        }
-
-        #darle para atras al video 10 segundos
-        binding.atrasID.setOnClickListener{
-            val currentPosition = videoView.currentPosition
-            val newPosition = currentPosition - 10000
-            if(newPosition >= 0){
-                videoView.seekTo(newPosition)
-            }
-            else{
-                videoView.seekTo(0)
-            }
-        }
-
-        #darle para adelante al video 10 segundos 
-        binding.adelanteID.setOnClickListener {
-            val currentPosition = videoView.currentPosition
-            val duration = videoView.duration
-            val newPosition = currentPosition + 10000
-
-            if(newPosition <= duration){
-                videoView.seekTo(newPosition)
-            }
-            else{
-                videoView.seekTo(duration)
-            }
-        }
+        val videoUri = Uri.parse("android.resource://${requireContext().packageName}/raw/doctops")
+        val mediaItem = MediaItem.fromUri(videoUri)
+        player!!.setMediaItem(mediaItem)
+        player!!.prepare()
+        player!!.playWhenReady = true
+    }
 ```
 
-Así quedaría el fragmento:
-![fotovideo](https://github.com/user-attachments/assets/86220f15-ae40-4b4d-a7e6-4dd30bd726a8)
+## Dependencias
 
-# 3. Como se pone un audio en Android Studio :smile:
-Lo primero sería ir a algún fragmento de los que tenemos en el proyecto, o crear nosotros un fragmento de nuevo. Despúes tenemos que codificar lo siguiente:
+* **ExoPlayer:** `implementation("com.google.android.exoplayer:exoplayer:2.X.X")` (Reemplaza `X.X` con la versión deseada)
+* **Android YouTube Player:** `implementation("com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5")`
+
+# 3.  Como se pone un audio en Android Studio 😄
+
+1. **Inicialización de MediaPlayer:** Se crea una instancia de `MediaPlayer` utilizando `MediaPlayer.create()` y se le asigna un archivo de audio local desde los recursos de la aplicación (`R.raw.song`).
+2. **Control de Reproducción:** Se implementan botones para pausar/reanudar, retroceder y avanzar en la reproducción del audio. Se utiliza `mediaPlayer?.isPlaying`, `mediaPlayer?.pause()`, `mediaPlayer?.start()`, `mediaPlayer?.seekTo()` para controlar el estado y la posición de la reproducción.
+3. **Gestión de Recursos:** En `onDestroyView()`, se libera el `MediaPlayer` utilizando `mediaPlayer?.release()` para evitar fugas de memoria y optimizar el uso de recursos.
+
+## Fragmentos de Código 😎
 
 ```bash
-    private var mediaPlayer: MediaPlayer? = null
-    mediaPlayer = MediaPlayer.create(requireContext(), R.raw.song)
-    mediaPlayer?.start()
+# Inicialización y Reproducción
+mediaPlayer = MediaPlayer.create(requireContext(), R.raw.song)
+
+mediaPlayer?.start()
 ```
 
-Con el código anterior, creamos un objeto MediaPlayer, el cual puede ser null, llamamos a un metodo que crea el audio y pilla la fuente del audio en la carpeta raw e iniciamos el audio con start()
-
-**Como establecer botones audio** 🤔
 ```bash
- #Configuración del botón de pausa/reproducción
-        binding.pauseAudiosId.setOnClickListener {
+# Control de Pausa/Reproducción
+binding.pauseAudiosId.setOnClickListener {
             if(mediaPlayer?.isPlaying == true){
                 mediaPlayer?.pause()
                 binding.pauseAudiosId.text = "play"
@@ -315,9 +295,11 @@ Con el código anterior, creamos un objeto MediaPlayer, el cual puede ser null, 
                 binding.pauseAudiosId.text = "stop"
             }
         }
+```
 
-        #Configuración del botón para retroceder en el audio
-        binding.atrasAudiosId.setOnClickListener {
+```bash
+# Control de Retroceso
+binding.atrasAudiosId.setOnClickListener {
             mediaPlayer?.let {
                 val newPosition = it.currentPosition - 10000
                 if(newPosition >= 0){
@@ -328,9 +310,11 @@ Con el código anterior, creamos un objeto MediaPlayer, el cual puede ser null, 
                 }
             }
         }
+```
 
-        #Configuración del botón para avanzar en el audio
-        binding.advanceAudiosId.setOnClickListener {
+```bash
+#control de avance
+binding.advanceAudiosId.setOnClickListener {
             mediaPlayer?.let {
                 val newPosition = it.currentPosition + 10000
                 if(newPosition <= it.duration){
@@ -341,28 +325,6 @@ Con el código anterior, creamos un objeto MediaPlayer, el cual puede ser null, 
                 }
             }
         }
-
-
 ```
-
-Así queda el fragmento:
-![fotoaudio](https://github.com/user-attachments/assets/e4d1589d-90b0-44e3-a68c-25c510f84b34)
-
-
-## IMPORTANTE :scream:
-Tanto en el fragmento de audio, debemos hacer esto:
-
-```bash
-#fragmento de audio
-override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-        mediaPlayer?.release()
-        mediaPlayer = null
-    }
-```
-Esto lo hacemos para que al ir a otro fragmento, no se esté reproduciendo el audio todo el tiempo, si no que termine su ejecución y liberamos los recursos
-
-
 
 
