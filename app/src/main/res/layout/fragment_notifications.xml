@@ -28,8 +28,33 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="141dp"
         android:layout_marginEnd="156dp"
-        android:layout_marginBottom="321dp"
+        android:layout_marginBottom="444dp"
         android:text="conectar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/emparejarID"
+        android:layout_width="114dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="332dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ListView
+        android:id="@+id/list_view_devices"
+        android:layout_width="308dp"
+        android:layout_height="242dp"
+        android:layout_marginStart="51dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="54dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
