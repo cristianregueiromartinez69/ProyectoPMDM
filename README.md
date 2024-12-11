@@ -328,3 +328,79 @@ binding.advanceAudiosId.setOnClickListener {
 ```
 
 
+# 4.  Cómo poner un stream en android studio:
+
+***Para poner un stream en android studio vamos a usar dos opciones, una con `WebView` en el que pondremos un stream de la plataforma twitch y luego volveremos a utilizar la libreria de `AndroidYoutubePlayer`***
+
+1. ***Streaming con WebView   ![image](https://github.com/user-attachments/assets/543e9946-e3e3-423f-9c64-befa23dfe31a)***
+
+   1. `webViewTwitch.settings.javaScriptEnabled = true:`
+      
+        Habilita JavaScript en el WebView, ya que Twitch necesita JavaScript para funcionar correctamente.
+      
+   2. `webViewTwitch.webViewClient = WebViewClient():`
+
+        Evita que los enlaces se abran en el navegador externo y los carga dentro del WebView.
+      
+   3. `webViewTwitch.loadUrl("https://www.twitch.tv/christmas24h"):`
+  
+        Carga la URL del stream de Twitch. 
+
+
+    ***La clase que nos quedaría para el stream de twitch sería esta:***
+   
+```bash
+class TwitchStreamActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_twitch_stream)
+
+        // Inicializar el WebView para el stream de Twitch
+        val webViewTwitch = findViewById<WebView>(R.id.webViewTwitch)
+
+        // Habilitar JavaScript (necesario para Twitch)
+        webViewTwitch.settings.javaScriptEnabled = true
+
+        // Evitar que los enlaces se abran en el navegador externo
+        webViewTwitch.webViewClient = WebViewClient()
+
+        // Cargar el stream de Twitch
+        webViewTwitch.loadUrl("https://www.twitch.tv/christmas24h")
+    }
+
+```
+
+
+1. ***Streaming con AndroidYoutubePlayer   ![image](https://github.com/user-attachments/assets/e83a0c61-2462-48c0-9887-2c23f5a83322)***
+
+
+   1. A la hora de mostrar un stream de youtube en la aplicación funciona de igual manera que si fuera un video, solo tendríamos que revisar si el video tiene restricción de edad para poder mostrarlo
+
+
+    ***La clase que nos quedaría para el stream de youtube sería esta:***
+   
+```bash
+val youTubePlayerView: YouTubePlayerView = binding.playerView
+lifecycle.addObserver(youTubePlayerView)
+
+youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+    override fun onReady(youTubePlayer: YouTubePlayer) {
+        val videoId = "M90qWFGEsv4"  // ID del stream en vivo de YouTube
+        youTubePlayer.loadVideo(videoId, 0f)
+    }
+})
+
+private fun initializePlayer() {
+    player = ExoPlayer.Builder(requireContext()).build()
+    val playerView: PlayerView = binding.playerViewExoPlayer2
+    playerView.player = player
+
+    val videoUri = Uri.parse("android.resource://${requireContext().packageName}/raw/doctops")
+    val mediaItem = MediaItem.fromUri(videoUri)
+    player!!.setMediaItem(mediaItem)
+    player!!.prepare()
+    player!!.playWhenReady = true
+}
+
+```      
