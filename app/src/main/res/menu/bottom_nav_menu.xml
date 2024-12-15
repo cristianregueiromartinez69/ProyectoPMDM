@@ -21,4 +21,9 @@
         android:icon="@drawable/ic_notifications_black_24dp"
         android:title="@string/redes" />
 
+    <item
+        android:id="@+id/navigation_streams"
+        android:icon="@drawable/stream_imagen"
+        android:title="@string/stream" />
+
 </menu>

@@ -29,6 +29,11 @@
         android:label="Redes Sociales"
         tools:layout="@layout/fragment_notifications" />
 
+    <fragment
+        android:id="@+id/navigation_streams"
+        android:name="com.example.proyectopmdm.ui.notifications.NotificationsFragment"
+        android:label="Streaming"
+        tools:layout="@layout/fragment_streaming" />
 
 
 
