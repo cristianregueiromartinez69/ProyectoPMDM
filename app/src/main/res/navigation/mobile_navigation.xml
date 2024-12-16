@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/navigation_streams"
-        android:name="com.example.proyectopmdm.ui.notifications.NotificationsFragment"
+        android:name="com.example.proyectopmdm.ui.stream.StreamFragment"
         android:label="Streaming"
         tools:layout="@layout/fragment_streaming" />
 
